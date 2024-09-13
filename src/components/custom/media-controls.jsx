@@ -1,5 +1,5 @@
 const MediaControls = () => {
-  return <div>media-controls</div>;
+  return <div>Media Controls</div>;
 };
 
 export default MediaControls;
