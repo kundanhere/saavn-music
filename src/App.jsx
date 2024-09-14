@@ -14,7 +14,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="saavn-music-theme">
       <LanguageProvider defaultLang="english" storageKey="saavn-music-lang">
-        <div className="relative">
+        <div className="relative overflow-x-hidden">
           <Navbar />
           <ResizablePanelGroup direction="horizontal" className="border w-screen h-full">
             <ResizablePanel defaultSize={20} minSize={16} maxSize={25} className="hidden lg:block">
@@ -35,7 +35,7 @@ function App() {
               </ScrollArea>
             </ResizablePanel>
           </ResizablePanelGroup>
-          <div className="absolute bottom-0 right-0 left-0 z-50 h-20 border w-screen backdrop-blur-lg flex items-center justify-center">
+          <div className="absolute bottom-0 right-0 -left-1 z-50 w-[101%] h-20 backdrop-blur-3xl flex items-center justify-evenly bg-secondary-foreground/70 text-secondary">
             {/* Media transport controls */}
             <MediaControls />
           </div>

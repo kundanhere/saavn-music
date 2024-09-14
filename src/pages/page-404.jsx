@@ -1,6 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const Page404 = () => {
@@ -8,8 +8,8 @@ const Page404 = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       className="flex min-h-[calc(100vh-11rem)] max-h-[100vh] h-full shrink-0 items-center justify-center rounded-md border border-dashed"
     >

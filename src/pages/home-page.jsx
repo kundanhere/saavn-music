@@ -1,5 +1,67 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { Separator } from '@/components/ui/separator';
+import TrackCard from '@/components/custom/track-card';
 import Page from '@/pages/layout';
+
+const songs = [
+  {
+    id: '001',
+    name: 'Pehli Dafa',
+    album: 'Pehli Dafa',
+    artist: 'Atif Aslam',
+    cover: 'https://i.scdn.co/image/ab67616d00001e02afd2bc3f876235be94c0d36d',
+  },
+  {
+    id: '002',
+    name: 'Aayi Nai (From "Stree 2")',
+    album: 'Stree 2',
+    artist: 'Sachin-Jigar, Amitabh Bhattacharya',
+    cover: 'https://i.scdn.co/image/ab67616d00001e02d4b354ed1b37bcea8d7163c2',
+  },
+  {
+    id: '003',
+    name: 'Milegi Milegi',
+    album: 'Stree',
+    artist: 'Sachin-Jigar, Mika Singh',
+    cover: 'https://i.scdn.co/image/ab67616d00001e02757e3e10c59c6e71affce6d6',
+  },
+  {
+    id: '004',
+    name: 'Boyfriend',
+    album: 'Boyfriend ',
+    artist: 'Justin Bieber',
+    cover: 'https://i.scdn.co/image/ab67616d00001e0291b2ad31ce6950017efbe2bf',
+  },
+  {
+    id: '005',
+    name: 'Dil Diyan Gallan',
+    album: 'Tiger Zinda Hai',
+    artist: 'Atif Aslam',
+    cover: 'https://i.scdn.co/image/ab67616d00001e02576521b1bf3ec2fd7fdfcbd5',
+  },
+  {
+    id: '006',
+    name: 'Shape of You',
+    album: 'Shape of You',
+    artist: 'Ed Sheeran',
+    cover: 'https://i.scdn.co/image/ab67616d00001e023dd66389d087a6a4f93f6140',
+  },
+  {
+    id: '007',
+    name: 'Dil Dhadakne Do',
+    album: 'Dil Dhadakne Do',
+    artist: 'Shankar-Ehsaan-Loy',
+    cover: 'https://i.scdn.co/image/ab67616d00001e02cff978906e5901b8efacc904',
+  },
+  {
+    id: '008',
+    name: 'Chal Tere Ishq Mein',
+    album: 'Gadar 2',
+    artist: 'Mithoon, Neeti Mohan',
+    cover: 'https://i.scdn.co/image/ab67616d00001e027813b389296a4f42219a9795',
+  },
+];
 
 const HomePage = () => {
   return (
@@ -28,8 +90,28 @@ const HomePage = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="music">
-          <Page title="Listen Now" body="Top picks for you. Updated daily." styles="mt-2">
-            <p>Display page content here.</p>
+          <Page title="Listen Now" body="Top picks for you. Updated daily." styles="mt-2 space-y-6">
+            <div className="relative flex">
+              <ScrollArea type="never" className="w-1 flex-1 overflow-x-auto">
+                <div className="flex space-x-4 pb-4">
+                  {songs.map((song) => (
+                    <TrackCard key={song.id} media={song} />
+                  ))}
+                </div>
+                <ScrollBar orientation="horizontal" />
+              </ScrollArea>
+            </div>
+            <Separator />
+            <div className="relative flex">
+              <ScrollArea type="never" className="w-1 flex-1 overflow-x-auto">
+                <div className="flex flex-row-reverse space-x-4 pb-4">
+                  {songs.map((song) => (
+                    <TrackCard key={song.id} media={song} />
+                  ))}
+                </div>
+                <ScrollBar orientation="horizontal" />
+              </ScrollArea>
+            </div>
           </Page>
         </TabsContent>
         <TabsContent value="live">

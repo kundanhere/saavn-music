@@ -65,4 +65,24 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .card-content::before {
+    opacity: 0;
+    transition: opacity;
+    transition-duration: 300ms;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.7) 0,
+      rgba(0, 0, 0, 0.3) 45%,
+      rgba(0, 0, 0, 0.2) 55%,
+      transparent 70%
+    );
+    content: '';
+    position: absolute;
+    top: -40px;
+    bottom: -40px;
+    left: -40px;
+    right: -40px;
+    z-index: 0;
+  }
 }
