@@ -1,14 +1,10 @@
-import { Separator } from '@/components/ui/separator';
+import Page from '@/pages/layout';
 
 const SongPage = () => {
   return (
-    <div className="mb-24">
-      <div className="space-y-1">
-        <h1 className="text-2xl font-semibold tracking-tight">Made for You</h1>
-        <p className="text-sm text-muted-foreground">Your personal playlists. Updated daily.</p>
-      </div>
-      <Separator className="my-4" />
-    </div>
+    <Page title="Songs" body="Your personal favorite songs. Updated daily." styles="mb-24">
+      <p>Display page content here.</p>
+    </Page>
   );
 };
 

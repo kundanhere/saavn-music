@@ -1,4 +1,5 @@
 import { LogOut, Search } from 'lucide-react';
+import InfoCard from '@/components/custom/info-card';
 import { Input } from '@/components/ui/input';
 import { ModeToggle } from '@/components/custom/mode-toggle';
 import { LanguageToggle } from '@/components/custom/lang-toggle';
@@ -25,8 +26,8 @@ const Navbar = () => {
   return (
     <>
       <Menubar className="flex justify-between items-center px-2 lg:px-4 py-6">
-        <div className="flex flex-1 items-center">
-          <h3 className="text-lg font-bold mr-2">Saavn v2.0</h3>
+        <div className="flex flex-1 items-center space-x-1">
+          <InfoCard />
           <MenubarMenu>
             <MenubarTrigger>View</MenubarTrigger>
             <MenubarContent>

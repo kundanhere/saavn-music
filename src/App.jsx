@@ -8,6 +8,7 @@ import Navbar from '@/components/custom/navbar';
 import Sidebar from '@/components/custom/sidebar';
 import HomePage from '@/pages/home-page';
 import SongPage from '@/pages/song-page';
+import Page404 from '@/pages/page-404';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                   {/* Add app routes here */}
                   <Route path="/" element={<HomePage />} />
                   <Route path="/songs" element={<SongPage />} />
+                  <Route path="/*" element={<Page404 />} />
                 </Routes>
               </ScrollArea>
             </ResizablePanel>

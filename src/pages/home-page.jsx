@@ -1,5 +1,5 @@
-import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import Page from '@/pages/layout';
 
 const HomePage = () => {
   return (
@@ -28,22 +28,14 @@ const HomePage = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="music">
-          <div className="mt-2 flex items-center justify-between">
-            <div className="space-y-1">
-              <h2 className="text-2xl font-semibold tracking-tight">Made for You</h2>
-              <p className="text-sm text-muted-foreground">Your personal playlists. Updated daily.</p>
-            </div>
-          </div>
-          <Separator className="my-4" />
+          <Page title="Listen Now" body="Top picks for you. Updated daily." styles="mt-2">
+            <p>Display page content here.</p>
+          </Page>
         </TabsContent>
         <TabsContent value="live">
-          <div className="mt-2 flex items-center justify-between">
-            <div className="space-y-1">
-              <h2 className="text-2xl font-semibold tracking-tight">Listen Now</h2>
-              <p className="text-sm text-muted-foreground">Top picks for you. Updated daily.</p>
-            </div>
-          </div>
-          <Separator className="my-4" />
+          <Page title="Made for You" body="Your personal playlists. Updated daily." styles="mt-2">
+            <p>Display page content here.</p>
+          </Page>
         </TabsContent>
       </Tabs>
     </div>
