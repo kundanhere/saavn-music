@@ -35,7 +35,7 @@ function App() {
               </ScrollArea>
             </ResizablePanel>
           </ResizablePanelGroup>
-          <div className="absolute bottom-0 right-0 -left-1 z-50 w-[101%] h-20 backdrop-blur-3xl flex items-center justify-evenly bg-secondary-foreground/70 text-secondary">
+          <div className="absolute bottom-0 right-0 -left-1 z-50 w-[101%] h-20 backdrop-blur-3xl flex items-center justify-evenly bg-black/30 text-white ring-1 ring-inset ring-offset-0 ring-offset-white ring-[#bebebe80] dark:ring-[#454e5d80]">
             {/* Media transport controls */}
             <MediaControls />
           </div>

@@ -11,7 +11,7 @@ const Page = ({ styles = '', title = 'Title', body = 'This is body text.', child
       transition={{ duration: 0.3 }}
       className={styles}
     >
-      <div className="space-y-1">
+      <div className="space-y-1 w-fit">
         <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
         <p className="text-sm text-muted-foreground">{body}</p>
       </div>

@@ -15,8 +15,8 @@ const Page404 = () => {
     >
       <div className="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center">
         <Search className="h-10 w-10 text-muted-foreground" />
-        <h3 className="mt-4 text-lg font-semibold">Oops! We can&apos;t find out.</h3>
-        <p className="mb-4 mt-2 text-sm text-muted-foreground">Sorry about that. Try searching for something else.</p>
+        <h3 className="mt-4 text-lg font-semibold">Oops! We couldn&apos;t find out.</h3>
+        <p className="mb-4 mt-2 text-sm text-muted-foreground">Sorry for this. Try looking for something else.</p>
         <Button variant="link" onClick={() => navigate('/')}>
           Go to homepage
         </Button>
