@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import CardScroller from '@/components/custom/card-scroller';
+import ArtistCard from '@/components/custom/artist-card';
 import Slider from '@/components/custom/slider';
 import Page from '@/pages/layout';
 import { songs, tabs } from '@/store/data';
@@ -27,8 +28,9 @@ const HomePage = () => {
         </TabsList>
         <TabsContent value="music">
           <Page title="Listen Now" body="Top picks for you. Updated daily." styles="mt-2 space-y-6">
-            <CardScroller data={songs} />
+            <CardScroller data={songs} size={120} />
             <Slider data={songs} title="New Releases" />
+            <Slider data={songs} title="Top Artists" card={ArtistCard} size={140} />
             <Slider data={songs} title="Tob Albums" />
           </Page>
         </TabsContent>

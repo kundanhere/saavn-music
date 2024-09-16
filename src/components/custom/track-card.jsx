@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
-const TrackCard = ({ media, size = 150, className, ...props }) => {
+const TrackCard = ({ size = 150, className = '', media, ...props }) => {
   return (
     <div {...props} className={`${className} space-y-3`} style={{ maxWidth: size + 'px' }}>
       <div className="relative overflow-hidden rounded-md shadow-md shadow-black/20 card-content hover:before:opacity-[1] group">

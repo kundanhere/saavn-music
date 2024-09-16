@@ -34,5 +34,3 @@ export const LanguageToggle = () => {
 };
 
 export default LanguageToggle;
-
-// flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium

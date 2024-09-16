@@ -11,7 +11,7 @@ const ButtonLink = ({ icon: Icon, disabled = false, children, ...props }) => {
     <NavLink
       {...props}
       className={({ isActive }) =>
-        (disabled ? buttonState.disabled : isActive ? buttonState.active : '') +
+        (disabled ? buttonState.disabled : isActive ? buttonState.active : buttonState.inActive) +
         ' inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring h-9 px-4 py-2 w-full justify-start '
       }
     >

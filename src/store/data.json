@@ -74,5 +74,15 @@
       "key": "live",
       "disabled": true
     }
+  ],
+
+  "playlists": [
+    "Logic Discography",
+    "Bedtime Beats",
+    "Feeling Happy",
+    "I miss Y2K Pop",
+    "Runtober",
+    "Mellow Days",
+    "Eminem Essentials"
   ]
 }

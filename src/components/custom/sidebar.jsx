@@ -1,15 +1,6 @@
 import { CirclePlay, Library, ListMusic, MicVocal, Music2, Radio } from 'lucide-react';
 import ButtonLink from '@/components/custom/button-link';
-
-const playlists = [
-  'Logic Discography',
-  'Bedtime Beats',
-  'Feeling Happy',
-  'I miss Y2K Pop',
-  'Runtober',
-  'Mellow Days',
-  'Eminem Essentials',
-];
+import { playlists } from '@/store/data';
 
 const Sidebar = () => {
   return (

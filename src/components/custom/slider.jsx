@@ -2,7 +2,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Separator } from '@/components/ui/separator';
 import TrackCard from '@/components/custom/track-card';
 
-const Slider = ({ data, title = 'Title', className, ...props }) => {
+const Slider = ({ card: Card = TrackCard, size = 150, title = 'Title', className = '', data, ...props }) => {
   return (
     <div {...props} className={`${className} relative -ml-1 pt-4`}>
       <Carousel className="w-full max-w-screen-lg">
@@ -18,7 +18,7 @@ const Slider = ({ data, title = 'Title', className, ...props }) => {
           {data.map((content, index) => (
             <CarouselItem key={index} className="p-2 pl-1 last:pr-0 basis-44">
               <div className="px-1">
-                <TrackCard media={content} />
+                <Card media={content} size={size} />
               </div>
             </CarouselItem>
           ))}
