@@ -3,7 +3,7 @@ import CardScroller from '@/components/custom/card-scroller';
 import ArtistCard from '@/components/custom/artist-card';
 import Slider from '@/components/custom/slider';
 import Page from '@/pages/layout';
-import { songs, tabs } from '@/store/data';
+import { artists, songs, tabs } from '@/store/data';
 
 const Trigger = ({ tab, value, ...props }) => {
   return (
@@ -28,10 +28,10 @@ const HomePage = () => {
         </TabsList>
         <TabsContent value="music">
           <Page title="Listen Now" body="Top picks for you. Updated daily." styles="mt-2 space-y-6">
-            <CardScroller data={songs} size={120} />
-            <Slider data={songs} title="New Releases" />
-            <Slider data={songs} title="Top Artists" card={ArtistCard} size={140} />
-            <Slider data={songs} title="Tob Albums" />
+            <CardScroller data={songs} size={200} />
+            <Slider data={songs} title="New Releases" category="songs" />
+            <Slider data={songs} title="Tob Albums" category="albums" />
+            <Slider data={artists} title="Popular Artists" category="artists" card={ArtistCard} size={140} />
           </Page>
         </TabsContent>
         <TabsContent value="live">

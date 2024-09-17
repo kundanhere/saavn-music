@@ -2,8 +2,10 @@
   "songs": [
     {
       "id": "001",
-      "name": "Pehli Dafa",
+      "name": "Atif Aslam: Pehli Dafa",
       "album": "Pehli Dafa",
+      "duration": "4:58",
+      "released": "2017",
       "artist": "Atif Aslam",
       "cover": "https://i.scdn.co/image/ab67616d00001e02afd2bc3f876235be94c0d36d"
     },
@@ -11,6 +13,8 @@
       "id": "002",
       "name": "Aayi Nai (From Stree 2)",
       "album": "Stree 2",
+      "duration": "2:58",
+      "released": "2024",
       "artist": "Sachin-Jigar, Amitabh Bhattacharya",
       "cover": "https://i.scdn.co/image/ab67616d00001e02d4b354ed1b37bcea8d7163c2"
     },
@@ -18,13 +22,17 @@
       "id": "003",
       "name": "Milegi Milegi",
       "album": "Stree",
+      "duration": "2:33",
+      "released": "2018",
       "artist": "Sachin-Jigar, Mika Singh",
       "cover": "https://i.scdn.co/image/ab67616d00001e02757e3e10c59c6e71affce6d6"
     },
     {
       "id": "004",
-      "name": "Boyfriend",
-      "album": "Boyfriend ",
+      "name": "Justin Bieber - Boyfriend",
+      "album": "Believe",
+      "duration": "2:51",
+      "released": "2012",
       "artist": "Justin Bieber",
       "cover": "https://i.scdn.co/image/ab67616d00001e0291b2ad31ce6950017efbe2bf"
     },
@@ -32,6 +40,8 @@
       "id": "005",
       "name": "Dil Diyan Gallan",
       "album": "Tiger Zinda Hai",
+      "duration": "3:05",
+      "released": "2017",
       "artist": "Atif Aslam",
       "cover": "https://i.scdn.co/image/ab67616d00001e02576521b1bf3ec2fd7fdfcbd5"
     },
@@ -39,6 +49,8 @@
       "id": "006",
       "name": "Shape of You",
       "album": "Shape of You",
+      "duration": "3:53",
+      "released": "2017",
       "artist": "Ed Sheeran",
       "cover": "https://i.scdn.co/image/ab67616d00001e023dd66389d087a6a4f93f6140"
     },
@@ -46,6 +58,8 @@
       "id": "007",
       "name": "Dil Dhadakne Do",
       "album": "Dil Dhadakne Do",
+      "duration": "3:49",
+      "released": "2015",
       "artist": "Shankar-Ehsaan-Loy",
       "cover": "https://i.scdn.co/image/ab67616d00001e02cff978906e5901b8efacc904"
     },
@@ -53,6 +67,8 @@
       "id": "008",
       "name": "Chal Tere Ishq Mein",
       "album": "Gadar 2",
+      "duration": "5:21",
+      "released": "2013",
       "artist": "Mithoon, Neeti Mohan",
       "cover": "https://i.scdn.co/image/ab67616d00001e027813b389296a4f42219a9795"
     }
@@ -84,5 +100,44 @@
     "Runtober",
     "Mellow Days",
     "Eminem Essentials"
+  ],
+
+  "artists": [
+    {
+      "id": "001",
+      "name": "Atif Aslam",
+      "albums": ["Pehli Dafa", "Tiger Zinda Hai", "Laila Majnu"],
+      "cover": "https://i.scdn.co/image/ab67616100005174c40600e02356cc86f0debe84"
+    },
+    {
+      "id": "002",
+      "name": "Arijit Singh",
+      "albums": ["Humari Adhuri Kahani", "Dunki", "Ek Villain"],
+      "cover": "https://i.scdn.co/image/ab676161000051745ba2d75eb08a2d672f9b69b7"
+    },
+    {
+      "id": "003",
+      "name": "Justin Bieber",
+      "albums": ["Baby", "Boyfriend", "Sorry"],
+      "cover": "https://i.scdn.co/image/ab676161000051748ae7f2aaa9817a704a87ea36"
+    },
+    {
+      "id": "004",
+      "name": "Ed Sheeran",
+      "albums": ["Shape Of You", "Perfect", "Thinking Out Loud"],
+      "cover": "https://i.scdn.co/image/ab676161000051743bcef85e105dfc42399ef0ba"
+    },
+    {
+      "id": "005",
+      "name": "Neeti Mohan",
+      "albums": ["Saaho", "Gadar 2", "Chennai Express"],
+      "cover": "https://i.scdn.co/image/ab67616100005174357df5037e26bf16917825fc"
+    },
+    {
+      "id": "006",
+      "name": "Harrdy Sandhu",
+      "albums": ["Kya Baat Ay", "Naah Goriye", "Backbone"],
+      "cover": "https://i.scdn.co/image/ab6761610000517451a6233108e4c65e402bc3e8"
+    }
   ]
 }

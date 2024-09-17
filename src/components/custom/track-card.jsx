@@ -19,7 +19,7 @@ const TrackCard = ({ size = 150, className = '', media, ...props }) => {
                   whileTap={{ scale: 0.98 }}
                   className="hover:bg-transparent w-fit h-fit rounded-full focus-visible:ring-0 focus-visible:ring-offset-0"
                 >
-                  <CirclePlay size={52} className="text-white/80" />
+                  <CirclePlay size={size / 2.5} className="text-white/80" />
                 </motion.div>
               </T.TooltipTrigger>
               <T.TooltipContent>

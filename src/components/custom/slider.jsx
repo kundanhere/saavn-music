@@ -1,14 +1,29 @@
 import * as Comp from '@/components/ui/carousel';
 import { Separator } from '@/components/ui/separator';
 import TrackCard from '@/components/custom/track-card';
+import { Link } from 'react-router-dom';
+import { useStore } from '@/store/useStore';
 
-const Slider = ({ card: Card = TrackCard, size = 150, title = 'Title', className = '', data, ...props }) => {
+const Slider = ({
+  card: Card = TrackCard,
+  size = 150,
+  title = 'Title',
+  category = 'category',
+  className = '',
+  data,
+  ...props
+}) => {
+  let { setCanGoBack } = useStore();
+
   return (
     <div {...props} className={`${className} relative -ml-1 pt-4`}>
       <Comp.Carousel className="w-full max-w-screen-lg">
         <div className="w-full flex items-end justify-between pl-1">
           <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
           <div className="absolute right-12 flex gap-1">
+            <Link className="hover:text-muted-foreground mr-2" to={`/${category}`} onClick={() => setCanGoBack(true)}>
+              View all
+            </Link>
             <Comp.CarouselPrevious className="relative top-4 left-0 rounded-md" />
             <Comp.CarouselNext className="relative top-4 left-0 rounded-md" />
           </div>
