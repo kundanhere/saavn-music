@@ -12,8 +12,8 @@ import Page404 from '@/pages/page-404';
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="saavn-music-theme">
-      <LanguageProvider defaultLang="english" storageKey="saavn-music-lang">
+    <ThemeProvider storageKey="saavn-music-theme">
+      <LanguageProvider storageKey="saavn-music-lang">
         <div className="relative overflow-x-hidden">
           <Navbar />
           <ResizablePanelGroup direction="horizontal" className="border w-screen h-full">
