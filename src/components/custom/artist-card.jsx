@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useStore } from '@/store/useStore';
 
 /**
  * A function to generate initials from a full name.
@@ -17,6 +18,8 @@ function getAlphabet(name) {
 }
 
 const ArtistCard = ({ size = 140, className = '', media, ...props }) => {
+  let { setCanGoBack } = useStore();
+
   return (
     <div {...props} className={`${className} space-y-3`} style={{ maxWidth: size + 'px' }}>
       <Avatar className="w-auto h-auto group" style={{ height: size + 'px', width: size + 'px' }}>
@@ -29,6 +32,7 @@ const ArtistCard = ({ size = 140, className = '', media, ...props }) => {
       <div className="flex items-start justify-center text-center text-xs max-h-10 overflow-hidden">
         <Link
           to={'/artist/' + media.id}
+          onClick={() => setCanGoBack(true)}
           style={{ width: `calc(${size - 15}px)` }}
           className="text-[0.5rem] text-balance text-center leading-5 tracking-tight inline-block items-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring justify-start hover:text-muted-foreground"
         >

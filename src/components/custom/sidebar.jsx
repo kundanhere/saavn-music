@@ -1,4 +1,4 @@
-import { CirclePlay, Library, ListMusic, MicVocal, Music2, Radio } from 'lucide-react';
+import * as Ico from 'lucide-react';
 import ButtonLink from '@/components/custom/button-link';
 import { playlists } from '@/store/data';
 
@@ -9,10 +9,10 @@ const Sidebar = () => {
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">Discover</h2>
           <div className="space-y-1">
-            <ButtonLink to="/" icon={CirclePlay}>
+            <ButtonLink to="/" icon={Ico.CirclePlay}>
               Listen Now
             </ButtonLink>
-            <ButtonLink to="/radio" icon={Radio} disabled={true}>
+            <ButtonLink to="/radio" icon={Ico.Radio} disabled={true}>
               Radio
             </ButtonLink>
           </div>
@@ -20,16 +20,16 @@ const Sidebar = () => {
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">Library</h2>
           <div className="space-y-1">
-            <ButtonLink to="/playlists" icon={ListMusic}>
+            <ButtonLink to="/playlists" icon={Ico.ListMusic}>
               Playlists
             </ButtonLink>
-            <ButtonLink to="/songs" icon={Music2}>
+            <ButtonLink to="/songs" icon={Ico.Music2}>
               Songs
             </ButtonLink>
-            <ButtonLink to="/artists" icon={MicVocal}>
+            <ButtonLink to="/artists" icon={Ico.MicVocal}>
               Artists
             </ButtonLink>
-            <ButtonLink to="/albums" icon={Library}>
+            <ButtonLink to="/albums" icon={Ico.Library}>
               Albums
             </ButtonLink>
           </div>
@@ -38,7 +38,7 @@ const Sidebar = () => {
           <h2 className="relative px-7 text-lg font-semibold tracking-tight">Playlists</h2>
           <div className="space-y-1 p-2">
             {playlists.map((playlist, index) => (
-              <ButtonLink key={index} to={`/playlist/${index + 1}`} icon={ListMusic}>
+              <ButtonLink key={index} to={`/playlist/${index + 1}`} icon={Ico.ListMusic}>
                 {playlist}
               </ButtonLink>
             ))}

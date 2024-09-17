@@ -1,19 +1,14 @@
 import { Languages } from 'lucide-react';
 import { useLanguage } from '@/providers/language-provider';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import * as Comp from '@/components/ui/dropdown-menu';
 
 export const LanguageToggle = () => {
   const { setLang } = useLanguage();
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <Comp.DropdownMenu>
+      <Comp.DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
           size="icon"
@@ -24,12 +19,12 @@ export const LanguageToggle = () => {
           <p className="text-xs absolute rotate-90 scale-0 transition-all hindi:rotate-0 hindi:scale-100">HI</p>
           <span className="sr-only">Music Language</span>
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setLang('hindi')}>Hindi</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setLang('english')}>English</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </Comp.DropdownMenuTrigger>
+      <Comp.DropdownMenuContent align="end">
+        <Comp.DropdownMenuItem onClick={() => setLang('hindi')}>Hindi</Comp.DropdownMenuItem>
+        <Comp.DropdownMenuItem onClick={() => setLang('english')}>English</Comp.DropdownMenuItem>
+      </Comp.DropdownMenuContent>
+    </Comp.DropdownMenu>
   );
 };
 
