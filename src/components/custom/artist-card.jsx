@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useStore } from '@/store/useStore';
+
+import { cn } from '@/lib/utils';
+
+import { useStore } from '@/store/use-store';
 
 /**
  * A function to generate initials from a full name.
@@ -21,10 +25,10 @@ const ArtistCard = ({ size = 140, className = '', media, ...props }) => {
   let { setCanGoBack } = useStore();
 
   return (
-    <div {...props} className={`${className} space-y-3 pl-1`} style={{ maxWidth: size + 'px' }}>
+    <div className={cn('space-y-3 pl-1', className)} style={{ maxWidth: `${size}px` }} {...props}>
       <Avatar
-        className="w-auto ring-1 ring-[#bebebe80] dark:ring-[#454e5d80] h-auto group"
-        style={{ height: size + 'px', width: size + 'px' }}
+        className="group h-auto w-auto ring-1 ring-[#bebebe80] dark:ring-[#454e5d80]"
+        style={{ height: `${size}px`, width: `${size}px` }}
       >
         <AvatarImage
           src={
@@ -35,12 +39,12 @@ const ArtistCard = ({ size = 140, className = '', media, ...props }) => {
         />
         <AvatarFallback className="text-5xl text-muted-foreground">{getAlphabet(media.name) || '#'}</AvatarFallback>
       </Avatar>
-      <div className="flex items-start justify-center text-center text-xs max-h-10 overflow-hidden">
+      <div className="flex max-h-10 items-start justify-center overflow-hidden text-center text-xs">
         <Link
-          to={'/artist/' + media.id}
+          to={`/artist/${media.id}`}
           onClick={() => setCanGoBack(true)}
           style={{ width: `calc(${size - 15}px)` }}
-          className="text-[0.5rem] text-balance text-center leading-5 tracking-tight inline-block items-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring justify-start hover:text-muted-foreground"
+          className="inline-block items-center justify-start whitespace-nowrap text-balance text-center text-[0.5rem] leading-5 tracking-tight transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
           {media.name || 'Lena Logic'}
         </Link>

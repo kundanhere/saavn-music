@@ -1,8 +1,9 @@
 import js from '@eslint/js';
-import globals from 'globals';
+import checkFile from 'eslint-plugin-check-file';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
+import globals from 'globals';
 
 export default [
   { ignores: ['dist'] },
@@ -20,6 +21,7 @@ export default [
     settings: { react: { version: '18.3' } },
     plugins: {
       react,
+      'check-file': checkFile,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
@@ -30,8 +32,27 @@ export default [
       ...reactHooks.configs.recommended.rules,
       'react/jsx-no-target-blank': 'off',
       'react/prop-types': 'off',
-      'no-unused-vars': 'off',
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'prefer-arrow-callback': 'error',
+      'prefer-template': 'warn',
+      'no-unused-vars': 'warn',
+      semi: 'error',
+
+      'check-file/filename-naming-convention': [
+        'error',
+        {
+          '**/*.{js,jsx}': 'KEBAB_CASE',
+        },
+        {
+          ignoreMiddleExtensions: true,
+        },
+      ],
+      'check-file/folder-naming-convention': [
+        'error',
+        {
+          'src/**': 'KEBAB_CASE',
+        },
+      ],
     },
   },
 ];

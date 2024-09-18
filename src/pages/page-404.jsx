@@ -1,6 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
 import { Button } from '@/components/ui/button';
 
 const Page404 = () => {
@@ -11,7 +12,7 @@ const Page404 = () => {
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="flex min-h-[calc(100vh-11rem)] max-h-[100vh] h-full shrink-0 items-center justify-center rounded-md border border-dashed"
+      className="flex h-full max-h-[100vh] min-h-[calc(100vh-11rem)] shrink-0 items-center justify-center rounded-md border border-dashed"
     >
       <div className="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center">
         <Search className="h-10 w-10 text-muted-foreground" />

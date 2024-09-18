@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
+
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useStore } from '@/store/useStore';
+
+import { useStore } from '@/store/use-store';
 
 /**
  * A custom React hook for handling page navigation within a single-page application.

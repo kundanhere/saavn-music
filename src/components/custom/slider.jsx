@@ -1,8 +1,13 @@
+import { Link } from 'react-router-dom';
+
 import * as Comp from '@/components/ui/carousel';
 import { Separator } from '@/components/ui/separator';
-import TrackCard from '@/components/custom/track-card';
-import { Link } from 'react-router-dom';
-import { useStore } from '@/store/useStore';
+
+import { cn } from '@/lib/utils';
+
+import { useStore } from '@/store/use-store';
+
+import TrackCard from './track-card';
 
 const Slider = ({
   card: Card = TrackCard,
@@ -16,22 +21,22 @@ const Slider = ({
   let { setCanGoBack } = useStore();
 
   return (
-    <div {...props} className={`${className} relative -ml-1 pt-4`}>
+    <div className={cn('relative -ml-1 pt-4', className)} {...props}>
       <Comp.Carousel className="w-full max-w-screen-lg">
-        <div className="w-full flex items-end justify-between pl-1">
+        <div className="flex w-full items-end justify-between pl-1">
           <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
           <div className="absolute right-12 flex gap-1">
-            <Link className="hover:text-muted-foreground mr-2" to={`/${category}`} onClick={() => setCanGoBack(true)}>
+            <Link className="mr-2 hover:text-muted-foreground" to={`/${category}`} onClick={() => setCanGoBack(true)}>
               View all
             </Link>
-            <Comp.CarouselPrevious className="relative top-4 left-0 rounded-md" />
-            <Comp.CarouselNext className="relative top-4 left-0 rounded-md" />
+            <Comp.CarouselPrevious className="relative left-0 top-4 rounded-md" />
+            <Comp.CarouselNext className="relative left-0 top-4 rounded-md" />
           </div>
         </div>
         <Separator className="my-4" />
         <Comp.CarouselContent className="-ml-1 mr-12 pb-4">
           {data.map((content, index) => (
-            <Comp.CarouselItem key={index} className="p-2 pl-1 last:pr-0 basis-44">
+            <Comp.CarouselItem key={index} className="basis-44 p-2 pl-1 last:pr-0">
               <div className="px-1">
                 <Card media={content} size={size} />
               </div>

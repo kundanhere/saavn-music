@@ -1,10 +1,12 @@
 import * as Ico from 'lucide-react';
-import ButtonLink from '@/components/custom/button-link';
+
 import { playlists } from '@/store/data';
+
+import ButtonLink from './button-link';
 
 const Sidebar = () => {
   return (
-    <div className="pb-12 mb-24">
+    <div className="mb-24 pb-12">
       <div className="space-y-4 py-4">
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">Discover</h2>

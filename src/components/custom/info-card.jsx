@@ -1,13 +1,14 @@
 import { CalendarDays } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 
 const InfoCard = () => {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Button variant="ghost" className="text-lg font-bold h-9 px-2">
+        <Button variant="ghost" className="h-9 px-2 text-lg font-bold">
           Saavn v2.0
         </Button>
       </HoverCardTrigger>
@@ -21,7 +22,7 @@ const InfoCard = () => {
             <h4 className="text-sm font-semibold">Creater</h4>
             <p className="text-sm">
               The Saavn v2.0 – created and maintained by{' '}
-              <a href="https://github.com/kundanhere" target="_blank" className="hover:underline underline-offset-2">
+              <a href="https://github.com/kundanhere" target="_blank" className="underline-offset-2 hover:underline">
                 @kundanhere
               </a>
               .

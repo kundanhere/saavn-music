@@ -1,7 +1,9 @@
 import { ListMusic, Play, Plus } from 'lucide-react';
-import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+
 import { Button } from '@/components/ui/button';
 import * as Comp from '@/components/ui/dropdown-menu';
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+
 import { playlists } from '@/store/data';
 
 const ActionButton = () => {
@@ -10,7 +12,7 @@ const ActionButton = () => {
       <Comp.DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="w-12 h-12 p-3.5 focus-visible:ring-0 outline-0 border-none rounded-none text-secondary-foreground/70 "
+          className="h-12 w-12 rounded-none border-none p-3.5 text-secondary-foreground/70 outline-0 focus-visible:ring-0"
         >
           <Plus />
           <span className="sr-only">Add</span>
@@ -43,25 +45,25 @@ const ActionButton = () => {
 const TableListItem = ({ content, idx }) => {
   return (
     <TableRow>
-      <TableCell className="font-medium w-[60px] text-center p-2">{idx}</TableCell>
+      <TableCell className="w-[60px] p-2 text-center font-medium">{idx}</TableCell>
       <TableCell className="w-[50px] p-2">
-        <img className="w-[32px] h-[32px] rounded-sm object-cover" src={content.cover} alt={content.album} />
+        <img className="h-[32px] w-[32px] rounded-sm object-cover" src={content.cover} alt={content.album} />
       </TableCell>
-      <TableCell className="p-2 min-w-36 max-w-56">
+      <TableCell className="min-w-36 max-w-56 p-2">
         <p>{content.name}</p>
         <p className="text-muted-foreground">{content.artist}</p>
       </TableCell>
-      <TableCell className="p-2 min-w-36 max-w-36">{content.album}</TableCell>
-      <TableCell className="w-[100px] text-center p-2">{content.released}</TableCell>
+      <TableCell className="min-w-36 max-w-36 p-2">{content.album}</TableCell>
+      <TableCell className="w-[100px] p-2 text-center">{content.released}</TableCell>
       <TableCell className="max-w-32 p-0">
-        <span className="align-middle [&:has([role=checkbox])]:pr-0 flex p-0 gap-1 items-center justify-center">
+        <span className="flex items-center justify-center gap-1 p-0 align-middle [&:has([role=checkbox])]:pr-0">
           <ActionButton />
-          <Button variant="ghost" className="w-12 h-12 p-3.5 rounded-none text-secondary-foreground/70">
+          <Button variant="ghost" className="h-12 w-12 rounded-none p-3.5 text-secondary-foreground/70">
             <Play />
           </Button>
         </span>
       </TableCell>
-      <TableCell className="w-[60px] text-center p-2">{content.duration}</TableCell>
+      <TableCell className="w-[60px] p-2 text-center">{content.duration}</TableCell>
     </TableRow>
   );
 };

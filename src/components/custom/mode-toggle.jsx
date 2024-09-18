@@ -1,7 +1,9 @@
 import { Moon, Sun } from 'lucide-react';
-import { useTheme } from '@/providers/theme-provider';
+
 import { Button } from '@/components/ui/button';
 import * as Comp from '@/components/ui/dropdown-menu';
+
+import { useTheme } from '@/providers/theme-provider';
 
 export const ModeToggle = () => {
   const { setTheme } = useTheme();
@@ -12,7 +14,7 @@ export const ModeToggle = () => {
         <Button
           variant="ghost"
           size="icon"
-          className="focus-visible:ring-0 focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
+          className="focus:bg-accent focus:text-accent-foreground focus-visible:ring-0 data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
         >
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />

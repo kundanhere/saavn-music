@@ -1,12 +1,16 @@
 import { ChevronLeft, ChevronRight, LogOut, Search } from 'lucide-react';
-import { LanguageToggle } from '@/components/custom/lang-toggle';
-import { ModeToggle } from '@/components/custom/mode-toggle';
-import InfoCard from '@/components/custom/info-card';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import * as Comp from '@/components/ui/menubar';
-import usePageNavigation from '@/hooks/usePageNavigation';
-import { useStore } from '@/store/useStore';
+
+import usePageNavigation from '@/hooks/use-page-navigation';
+
+import { useStore } from '@/store/use-store';
+
+import InfoCard from './info-card';
+import { LanguageToggle } from './lang-toggle';
+import { ModeToggle } from './mode-toggle';
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -19,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <Comp.Menubar className="flex justify-between items-center px-2 lg:px-4 py-6">
+      <Comp.Menubar className="flex items-center justify-between px-2 py-6 lg:px-4">
         <div className="flex flex-shrink items-center space-x-1">
           <InfoCard />
           <Comp.MenubarMenu>
@@ -59,14 +63,14 @@ const Navbar = () => {
           <Button
             disabled={!canGoBack}
             variant="outline"
-            className="size-8 p-1 rounded-md flex items-center justify-center"
+            className="flex size-8 items-center justify-center rounded-md p-1"
             onClick={handleGoBack}
           >
             <ChevronLeft />
           </Button>
           <Button
             variant="outline"
-            className="size-8 p-1 rounded-md flex items-center justify-center"
+            className="flex size-8 items-center justify-center rounded-md p-1"
             onClick={handleGoForward}
           >
             <ChevronRight />
@@ -80,7 +84,7 @@ const Navbar = () => {
             name="search"
             type="text"
             placeholder="Search by artists, songs, or albums"
-            className="pl-8 h-8 shadow-sm outline-none border-b-[1.5px] focus-visible:border-b-primary focus-visible:ring-transparent focus:text-accent-foreground"
+            className="h-8 border-b-[1.5px] pl-8 shadow-sm outline-none focus:text-accent-foreground focus-visible:border-b-primary focus-visible:ring-transparent"
           />
         </form>
 
