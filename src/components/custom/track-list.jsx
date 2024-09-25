@@ -68,9 +68,9 @@ const TableListItem = ({ content, idx }) => {
   );
 };
 
-const TrackList = ({ data }) => {
+const TrackList = ({ data, className = '' }) => {
   return (
-    <Table>
+    <Table className={className}>
       <TableBody>
         {data.map((item, index) => (
           <TableListItem key={item.id} content={item} idx={index + 1} />

@@ -65,7 +65,9 @@
   body {
     @apply bg-background text-foreground;
   }
+}
 
+@layer components {
   .card-content::before {
     opacity: 0;
     transition: opacity;
@@ -84,5 +86,17 @@
     left: -40px;
     right: -40px;
     z-index: 0;
+  }
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

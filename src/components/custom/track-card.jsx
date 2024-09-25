@@ -45,7 +45,7 @@ const TrackCard = ({ size = 150, className = '', media, ...props }) => {
       </div>
       <div className="flex flex-col space-y-1 text-xs">
         <Link
-          to={`/album/${media.id}`}
+          to={`/details/${media.id}`}
           style={{ width: `calc(${size - 10}px)` }}
           onClick={() => setCanGoBack(true)}
           className="inline-flex items-center justify-start whitespace-nowrap text-[0.75rem] font-medium leading-none tracking-tight transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
@@ -53,7 +53,7 @@ const TrackCard = ({ size = 150, className = '', media, ...props }) => {
           {media.album || 'Thinking Components'}
         </Link>
         <Link
-          to={`/artist/${media.id}`}
+          to={`/details/${media.id}`}
           style={{ width: `calc(${size - 10}px)` }}
           onClick={() => setCanGoBack(true)}
           className="inline-block items-center justify-start truncate whitespace-nowrap text-[0.5rem] leading-5 tracking-tight text-muted-foreground transition-colors hover:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
