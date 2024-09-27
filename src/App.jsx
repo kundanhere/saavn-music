@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
+import AlbumPage from '@/pages/album-page';
+import ArtistPage from '@/pages/artist-page';
 import DetailsPage from '@/pages/details-page';
 import HomePage from '@/pages/home-page';
 import Page404 from '@/pages/page-404';
@@ -34,6 +36,8 @@ function App() {
                   {/* Add app routes here */}
                   <Route path="/" element={<HomePage />} />
                   <Route path="/songs" element={<SongPage />} />
+                  <Route path="/albums" element={<AlbumPage />} />
+                  <Route path="/artists" element={<ArtistPage />} />
                   <Route path="/details/:id" element={<DetailsPage />} />
                   <Route path="/*" element={<Page404 />} />
                 </Routes>

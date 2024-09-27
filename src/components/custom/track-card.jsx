@@ -23,7 +23,7 @@ const TrackCard = ({ size = 150, className = '', media, ...props }) => {
                   whileTap={{ scale: 0.98 }}
                   className="h-fit w-fit rounded-full hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
                 >
-                  <CirclePlay size={size / 2.5} className="text-white/80" />
+                  <CirclePlay size={size / 2.5} className="max-w-24 text-white/80" />
                 </motion.div>
               </T.TooltipTrigger>
               <T.TooltipContent>
@@ -56,7 +56,7 @@ const TrackCard = ({ size = 150, className = '', media, ...props }) => {
           to={`/details/${media.id}`}
           style={{ width: `calc(${size - 10}px)` }}
           onClick={() => setCanGoBack(true)}
-          className="inline-block truncate whitespace-nowrap text-[0.5rem] leading-5 tracking-tight text-muted-foreground transition-colors hover:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+          className="inline-block truncate whitespace-nowrap text-[0.5rem] tracking-tight text-muted-foreground transition-colors hover:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
           {media.artist || 'Lena Logic'}
         </Link>
