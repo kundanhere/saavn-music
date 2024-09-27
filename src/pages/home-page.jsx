@@ -1,11 +1,11 @@
-import Page from '@/pages/layout';
-
 import ArtistCard from '@/components/custom/artist-card';
 import CardScroller from '@/components/custom/card-scroller';
 import Slider from '@/components/custom/slider';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import { artists, songs, tabs } from '@/store/data';
+
+import Page from './layout';
 
 const Trigger = ({ tab, value, ...props }) => {
   return (

@@ -1,10 +1,10 @@
-import Page from '@/pages/layout';
-
 import TrackList from '@/components/custom/track-list';
 
 import { sortByDate } from '@/lib/utils';
 
 import { songs } from '@/store/data';
+
+import Page from './layout';
 
 const SongPage = () => {
   return (
