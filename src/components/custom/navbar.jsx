@@ -1,16 +1,20 @@
-import { ChevronLeft, ChevronRight, LogOut, Search } from 'lucide-react';
+import { ChevronLeft, ChevronRight, LogOut, Menu, Search } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import * as Comp from '@/components/ui/menubar';
+import * as MN from '@/components/ui/sheet';
 
 import usePageNavigation from '@/hooks/use-page-navigation';
 
 import { useStore } from '@/store/use-store';
 
+import { ScrollArea } from '../ui/scroll-area';
+import { Separator } from '../ui/separator';
 import InfoCard from './info-card';
 import { LanguageToggle } from './lang-toggle';
 import { ModeToggle } from './mode-toggle';
+import Sidebar from './sidebar';
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -25,7 +29,9 @@ const Navbar = () => {
     <>
       <Comp.Menubar className="flex items-center justify-between px-2 py-6 lg:px-4">
         <div className="flex flex-shrink items-center space-x-1">
+          {/* app logo */}
           <InfoCard />
+          {/* menu items  */}
           <Comp.MenubarMenu>
             <Comp.MenubarTrigger>View</Comp.MenubarTrigger>
             <Comp.MenubarContent>
@@ -89,9 +95,33 @@ const Navbar = () => {
         </form>
 
         {/* Change app theme and language */}
-        <div className="flex flex-1 justify-end gap-2">
-          <LanguageToggle />
-          <ModeToggle />
+        <div className="flex flex-1 justify-end gap-1">
+          <span className="hidden gap-1 lg:flex">
+            <LanguageToggle />
+            <ModeToggle />
+          </span>
+          {/* Mobille menu */}
+          <MN.Sheet>
+            <MN.SheetTrigger className="inline-flex h-10 w-10 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-accent data-[state=open]:text-accent-foreground lg:hidden">
+              <Menu className="h-[1.2rem] w-[1.2rem]" />
+            </MN.SheetTrigger>
+            <MN.SheetContent side="left" className="w-[255px] px-0 py-2 lg:hidden">
+              <MN.SheetHeader className="items-start px-5">
+                <InfoCard />
+                <MN.SheetTitle className="hidden" />
+                <MN.SheetDescription className="hidden" />
+              </MN.SheetHeader>
+              <Separator className="mt-1" />
+              <ScrollArea className="flex max-h-[calc(100vh-3.2rem)] min-h-[calc(100vh-3.2rem)] flex-col">
+                <Sidebar />
+                <Separator className="mt-1" />
+                <MN.SheetFooter className="!flex-row !justify-start !space-x-1">
+                  <LanguageToggle />
+                  <ModeToggle />
+                </MN.SheetFooter>
+              </ScrollArea>
+            </MN.SheetContent>
+          </MN.Sheet>
         </div>
       </Comp.Menubar>
     </>
