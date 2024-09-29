@@ -74,7 +74,7 @@ const DetailsPage = () => {
         </div>
         {/* Scrollable content */}
         <div className="p-4">
-          <TrackList data={sortByDate(songs, 'desc')} className="mb-32" />
+          <TrackList data={sortByDate(songs, 'desc')} className="mb-40" />
         </div>
       </div>
     </motion.div>

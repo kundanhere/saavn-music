@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 import { Separator } from '@/components/ui/separator';
 
-const Page = ({ styles = '', title = 'Title', body = 'This is body text.', children, ...props }) => {
+const Page = ({ styles = 'mb-32', title = 'Title', body = 'This is body text.', children, ...props }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}

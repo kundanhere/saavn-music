@@ -21,7 +21,7 @@ const Trigger = ({ tab, value, ...props }) => {
 
 const HomePage = () => {
   return (
-    <div className="mb-24">
+    <div className="mb-32">
       <Tabs defaultValue="music" className="space-y-6">
         <TabsList className="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground">
           {tabs.map((tab) => (
@@ -37,7 +37,7 @@ const HomePage = () => {
           </Page>
         </TabsContent>
         <TabsContent value="live">
-          <Page title="Made for You" body="Your personal playlists. Updated daily." styles="mt-2">
+          <Page title="Made for You" body="Your personal playlists. Updated daily." styles="mb-0 mt-2">
             <p>Display page content here.</p>
           </Page>
         </TabsContent>
