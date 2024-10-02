@@ -1,16 +1,16 @@
-import { ChevronLeft, ChevronRight, LogOut, Menu, Search } from 'lucide-react';
+import { ChevronLeft, ChevronRight, LogOut, Menu } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import * as Comp from '@/components/ui/menubar';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Separator } from '@/components/ui/separator';
 import * as MN from '@/components/ui/sheet';
 
 import usePageNavigation from '@/hooks/use-page-navigation';
 
 import { useStore } from '@/store/use-store';
 
-import { ScrollArea } from '../ui/scroll-area';
-import { Separator } from '../ui/separator';
+import AutoComplete from './auto-complete';
 import InfoCard from './info-card';
 import { LanguageToggle } from './lang-toggle';
 import { ModeToggle } from './mode-toggle';
@@ -85,13 +85,14 @@ const Navbar = () => {
 
         {/* search input */}
         <form className="relative flex flex-grow" onSubmit={handleSubmit}>
-          <Search className="absolute left-2 top-2 h-4 w-4" aria-hidden="true" />
+          {/* <Search className="absolute left-2 top-2 h-4 w-4" aria-hidden="true" />
           <Input
             name="search"
             type="text"
             placeholder="Search by artists, songs, or albums"
             className="h-8 border-b-[1.5px] pl-8 shadow-sm outline-none focus:text-accent-foreground focus-visible:border-b-primary focus-visible:ring-transparent"
-          />
+          /> */}
+          <AutoComplete />
         </form>
 
         {/* Change app theme and language */}

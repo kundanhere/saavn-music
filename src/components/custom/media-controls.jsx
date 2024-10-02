@@ -26,7 +26,7 @@ const MediaControls = () => {
       <div className="absolute left-0 top-0 h-full w-full bg-black/30 dark:bg-white/30" />
       <div className="relative z-10 flex h-full w-full items-start justify-center px-1 md:justify-between">
         <motion.button
-          className="hidden h-full max-w-md cursor-default hover:bg-black/30 md:flex"
+          className="hidden h-full max-w-md cursor-default hover:bg-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary md:flex"
           whileTap={{ scale: 0.96 }}
         >
           <div className="h-full min-w-28 max-w-28 overflow-hidden">
