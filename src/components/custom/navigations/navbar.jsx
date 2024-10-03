@@ -13,12 +13,12 @@ import { useStore } from '@/store/use-store';
 import AutoComplete from './auto-complete';
 import InfoCard from './info-card';
 import { LanguageToggle } from './lang-toggle';
-import { ModeToggle } from './mode-toggle';
 import Sidebar from './sidebar';
+import { ModeToggle } from './theme-toggle';
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  // Handle form submission
+  // Handle Search
 };
 
 const Navbar = () => {
@@ -85,13 +85,6 @@ const Navbar = () => {
 
         {/* search input */}
         <form className="relative flex flex-grow" onSubmit={handleSubmit}>
-          {/* <Search className="absolute left-2 top-2 h-4 w-4" aria-hidden="true" />
-          <Input
-            name="search"
-            type="text"
-            placeholder="Search by artists, songs, or albums"
-            className="h-8 border-b-[1.5px] pl-8 shadow-sm outline-none focus:text-accent-foreground focus-visible:border-b-primary focus-visible:ring-transparent"
-          /> */}
           <AutoComplete />
         </form>
 
@@ -101,7 +94,7 @@ const Navbar = () => {
             <LanguageToggle />
             <ModeToggle />
           </span>
-          {/* Mobille menu */}
+          {/* Mobile menu */}
           <MN.Sheet>
             <MN.SheetTrigger className="inline-flex h-10 w-10 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-accent data-[state=open]:text-accent-foreground lg:hidden">
               <Menu className="h-[1.2rem] w-[1.2rem]" />

@@ -1,16 +1,33 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { PlayIcon } from 'lucide-react';
+import { useParams } from 'react-router-dom';
 
-import TrackList from '@/components/custom/track-list';
 import { Button } from '@/components/ui/button';
 
-import { sortByDate } from '@/lib/utils';
-
-import { songs } from '@/store/data';
+import * as req from '@/services/api/jio-saavn';
 
 const DetailsPage = () => {
+  const { type, id } = useParams();
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // Fetch initial data
+    async function fetchData() {
+      const res = await req.fetchSongDetailsByQuery(type, id);
+      if (Object.keys(res).length > 0) {
+        setData(res.results);
+        console.log(`songs ${data}`);
+      }
+    }
+    fetchData();
+
+    // Fetch additional data as needed
+    //...
+  }, [type, id]);
+
   // Use ref for scroll container
   const scrollRef = useRef(null);
   // Get scroll progress using Framer Motion's useScroll hook
@@ -73,9 +90,7 @@ const DetailsPage = () => {
           </div>
         </div>
         {/* Scrollable content */}
-        <div className="p-4">
-          <TrackList data={sortByDate(songs, 'desc')} className="mb-40" />
-        </div>
+        <div className="p-4">{/* <TrackList data={sortByDate(songs, 'desc')} className="mb-40" /> */}</div>
       </div>
     </motion.div>
   );

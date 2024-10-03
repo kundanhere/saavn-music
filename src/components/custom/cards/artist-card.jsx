@@ -3,26 +3,11 @@ import { Link } from 'react-router-dom';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-import { cn } from '@/lib/utils';
+import { cn, getAlphabet } from '@/lib/utils';
 
 import { useStore } from '@/store/use-store';
 
-/**
- * A function to generate initials from a full name.
- *
- * @param {string} name - The full name from which to generate initials.
- * @returns {string} The initials of the name. If the name is empty or null, returns an empty string.
- */
-function getAlphabet(name) {
-  if (!name) return '';
-  const initials = name
-    .split(' ')
-    .map((n) => n[0])
-    .join('');
-  return initials;
-}
-
-const ArtistCard = ({ size = 140, className = '', media, ...props }) => {
+const ArtistCard = ({ size = 140, className, media, ...props }) => {
   let { setCanGoBack } = useStore();
 
   return (
@@ -32,10 +17,7 @@ const ArtistCard = ({ size = 140, className = '', media, ...props }) => {
         style={{ height: `${size}px`, width: `${size}px` }}
       >
         <AvatarImage
-          src={
-            media.cover ||
-            'https://ui.shadcn.com/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1615247001958-f4bc92fa6a4a%3Fw%3D300%26dpr%3D2%26q%3D80&w=384&q=75'
-          }
+          src={media.image[2]?.url}
           className="object-cover transition-all duration-500 group-hover:scale-105"
         />
         <div className="group/wrap hidden cursor-pointer group-hover:block">
@@ -49,12 +31,12 @@ const ArtistCard = ({ size = 140, className = '', media, ...props }) => {
       </Avatar>
       <div className="flex max-h-10 items-start justify-center overflow-hidden text-xs">
         <Link
-          to={`/artist/${media.id}`}
+          to={`/details/${media.type}/${media.id}`}
           onClick={() => setCanGoBack(true)}
           style={{ width: `${size}px` }}
-          className="inline-block items-center justify-start truncate whitespace-nowrap text-center text-[0.5rem] leading-5 tracking-tight transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+          className="inline-block items-center justify-start truncate text-center text-[0.5rem] leading-5 tracking-tight transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
-          {media.name || 'Lena Logic'}
+          {media.name || 'Unknown Artist'}
         </Link>
       </div>
     </div>

@@ -1,8 +1,10 @@
-// Page layout
 import { motion } from 'framer-motion';
 
 import { Separator } from '@/components/ui/separator';
 
+/**
+ * Renders a page layout component with a title, body text, and children content.
+ */
 const Page = ({ styles = 'mb-32', title = 'Title', body = 'This is body text.', children, ...props }) => {
   return (
     <motion.div

@@ -7,8 +7,20 @@ import { cn } from '@/lib/utils';
 
 import { useStore } from '@/store/use-store';
 
-import TrackCard from './track-card';
+import TrackCard from './cards/track-card';
 
+/**
+ * A reusable slider component that displays a collection of content items (e.g. tracks) in a carousel layout.
+ *
+ * @param {Object} props - The component props.
+ * @param {React.ComponentType} [props.card=TrackCard] - The component to use for rendering each content item.
+ * @param {number} [props.size=150] - The size (width) of each content item.
+ * @param {string} [props.title='Title'] - The title to display above the carousel.
+ * @param {string} [props.category='category'] - The category to display a "View all" link for.
+ * @param {string} [props.className=''] - Additional CSS classes to apply to the slider container.
+ * @param {any[]} props.data - The data array of content items to display in the carousel.
+ * @returns {JSX.Element} - The rendered Slider component.
+ */
 const Slider = ({
   card: Card = TrackCard,
   size = 150,
@@ -35,8 +47,8 @@ const Slider = ({
         </div>
         <Separator className="my-4" />
         <Comp.CarouselContent className="-ml-1 mr-12 pb-4">
-          {data.map((content, index) => (
-            <Comp.CarouselItem key={index} className="basis-44 p-2 pl-1 last:pr-0">
+          {data?.map((content) => (
+            <Comp.CarouselItem key={content.id} className="basis-44 p-2">
               <div className="px-1">
                 <Card media={content} size={size} />
               </div>

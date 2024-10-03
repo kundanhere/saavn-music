@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 import * as T from '@/components/ui/tooltip';
 
-import { cn } from '@/lib/utils';
+import { capitalizeFirstLetter, cn, formatString } from '@/lib/utils';
 
 import { useStore } from '@/store/use-store';
 
-const TrackCard = ({ size = 150, className = '', media, ...props }) => {
+const TrackCard = ({ size = 150, className, media, ...props }) => {
   let { setCanGoBack } = useStore();
 
   return (
@@ -38,7 +38,7 @@ const TrackCard = ({ size = 150, className = '', media, ...props }) => {
           height={size}
           className="relative -z-10 aspect-square h-auto w-auto object-cover transition-all group-hover:scale-105"
           src={
-            media.cover ||
+            media.image[2].url ||
             'https://ui.shadcn.com/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1615247001958-f4bc92fa6a4a%3Fw%3D300%26dpr%3D2%26q%3D80&w=384&q=75'
           }
         />
@@ -48,17 +48,19 @@ const TrackCard = ({ size = 150, className = '', media, ...props }) => {
           to={`/details/${media.id}`}
           style={{ width: `${size - 10}px` }}
           onClick={() => setCanGoBack(true)}
-          className="inline-flex items-center justify-start whitespace-nowrap text-[0.75rem] font-medium leading-none tracking-tight transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+          className="inline-flex origin-left scale-95 items-center justify-start truncate text-[0.75rem] leading-4 tracking-tight transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
-          {media.album || 'Thinking Components'}
+          {capitalizeFirstLetter(media.name)}
         </Link>
         <Link
           to={`/details/${media.id}`}
           style={{ width: `calc(${size - 10}px)` }}
           onClick={() => setCanGoBack(true)}
-          className="inline-block truncate whitespace-nowrap text-[0.5rem] tracking-tight text-muted-foreground transition-colors hover:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+          className="inline-block origin-left scale-90 truncate text-[0.5rem] tracking-tight text-muted-foreground transition-colors hover:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
-          {media.artist || 'Lena Logic'}
+          {media.album?.name
+            ? `Album - ${capitalizeFirstLetter(media.album?.name)}`
+            : formatString(media.artists?.primary) || capitalizeFirstLetter(media.type)}
         </Link>
       </div>
     </div>

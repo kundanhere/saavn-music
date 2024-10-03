@@ -25,9 +25,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  server: {
-    proxy: {
-      '/api': 'https://saavn.dev',
-    },
-  },
+  // server: {
+  //   proxy: {
+  //     '/api': 'https://jiosaavn-api-jade.vercel.app',
+  //   },
+  // },
 });

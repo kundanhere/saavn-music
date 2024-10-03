@@ -1,39 +1,61 @@
-import ArtistCard from '@/components/custom/artist-card';
-import CardScroller from '@/components/custom/card-scroller';
-import Slider from '@/components/custom/slider';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Suspense, lazy } from 'react';
 
-import { artists, songs, tabs } from '@/store/data';
+import HomeTabs from '@/components/custom/home-tabs';
+import SkeletonHome from '@/components/custom/skeletons/home';
+import SkeletonSlider from '@/components/custom/skeletons/slider';
+import { TabsContent } from '@/components/ui/tabs';
+
+import useFetchTopResults from '@/hooks/use-fetch-top-results';
+
+import { useLanguage } from '@/providers/language-provider';
 
 import Page from './layout';
 
-const Trigger = ({ tab, value, ...props }) => {
-  return (
-    <TabsTrigger
-      value={value}
-      className="relative inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
-      {...props}
-    >
-      {tab}
-    </TabsTrigger>
-  );
-};
+const Slider = lazy(() => import('@/components/custom/slider'));
+const ArtistCard = lazy(() => import('@/components/custom/cards/artist-card'));
+const CardScroller = lazy(() => import('@/components/custom/card-scroller'));
 
+/**
+ * The HomePage component is the main page of the application, displaying various content sections such as playlists, new releases, top albums, and popular artists.
+ * It uses the Tabs component to switch between different content sections, and fetches data from the API using the fetchSearchResults function.
+ * The component also utilizes several custom components like ArtistCard, CardScroller, and Slider to display the content.
+ */
 const HomePage = () => {
+  const { lang } = useLanguage();
+
+  // Fetches the top results data for the given query.
+  const { isPending, error, data } = useFetchTopResults(lang);
+
+  // Renders a skeleton loading state for the home page when data is being fetched.
+  // This is used as a fallback while the actual content is being loaded.
+  if (isPending) return <SkeletonHome />;
+
+  // Renders an error message when the data fetching fails.
+  if (error) return <div>Error fetching data: {error.message}</div>;
+
   return (
     <div className="mb-32">
-      <Tabs defaultValue="music" className="space-y-6">
-        <TabsList className="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground">
-          {tabs.map((tab) => (
-            <Trigger key={tab.key} tab={tab.name} value={tab.key} disabled={tab.disabled} />
-          ))}
-        </TabsList>
+      <HomeTabs defaultValue="music">
         <TabsContent value="music">
           <Page title="Listen Now" body="Top picks for you. Updated daily." styles="mt-2 space-y-6">
-            <CardScroller data={songs} size={200} />
-            <Slider data={songs} title="New Releases" category="songs" />
-            <Slider data={songs} title="Tob Albums" category="albums" />
-            <Slider data={artists} title="Popular Artists" category="artists" card={ArtistCard} size={140} />
+            <Suspense fallback={isPending && <SkeletonSlider size={200} />}>
+              <CardScroller data={data?.playlists?.results} size={200} />
+            </Suspense>
+            <Suspense fallback={<SkeletonSlider size={150} />}>
+              <Slider data={data?.songs?.results} title="New Releases" category="songs" />
+            </Suspense>
+            <Suspense fallback={<SkeletonSlider size={150} />}>
+              <Slider data={data?.albums?.results} title="Tob Albums" category="albums" />
+            </Suspense>
+            <Suspense fallback={<SkeletonSlider size={140} />}>
+              <Slider
+                data={data?.artists?.results}
+                title="Popular Artists"
+                category="artists"
+                card={ArtistCard}
+                size={140}
+              />
+            </Suspense>
           </Page>
         </TabsContent>
         <TabsContent value="live">
@@ -41,7 +63,7 @@ const HomePage = () => {
             <p>Display page content here.</p>
           </Page>
         </TabsContent>
-      </Tabs>
+      </HomeTabs>
     </div>
   );
 };

@@ -4,6 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
 
+/**
+ * Renders a 404 page component with a search icon, error message, and a button to navigate to the homepage.
+ * The component is wrapped in a motion.div from the Framer Motion library to add a fade-in and slide-up animation.
+ * The component is centered on the page and has a rounded border with a dashed style.
+ */
 const Page404 = () => {
   const navigate = useNavigate();
 
