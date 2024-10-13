@@ -62,10 +62,46 @@ export const fetchPlaylistsByQuery = async (query) => {
 /**
  * Fetches details for a song by its ID.
  */
-export const fetchSongDetailsByQuery = async (type, id) => {
+export const fetchSongDetailsById = async (id) => {
   try {
-    const response = await api.get(`/${type}s/${id}`);
+    const response = await api.get(`/songs/${id}`);
     return response.status === 200 ? response.data.data[0] : response.data.message;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * Fetches details for a Album by its ID.
+ */
+export const fetchAlbumDetailsById = async (id) => {
+  try {
+    const response = await api.get(`/albums?id=${id}`);
+    return response.status === 200 ? response.data.data : response.data.message;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * Fetches details for a playlist by its ID.
+ */
+export const fetchPlaylistDetailsById = async (id = '1167751266') => {
+  try {
+    const response = await api.get(`/playlists?id=${id}`);
+    return response.status === 200 ? response.data.data : response.data.message;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * Fetches details for a artist by its ID.
+ */
+export const fetchArtistDetailsById = async (id = '1167751266') => {
+  try {
+    const response = await api.get(`/artists/${id}`);
+    return response.status === 200 ? response.data.data : response.data.message;
   } catch (error) {
     console.log(error);
   }
@@ -128,6 +164,74 @@ export const fetchInfintieItems = async ({ query, queryType, pageSize, pageParam
         (res.currentPage = pageParam),
         // Calculate the next page based on the start index and total count
         (res.nextPage = response.data.data.start + pageSize < response.data.data.total ? pageParam + 1 : null);
+    }
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * Fetches a paginated set of playlist song items from the JioSaavn API based on the provided playlist ID, page size, and page parameter.
+ *
+ * @param {object} params - An object containing the playlist parameters.
+ * @param {string} params.id - The ID of the playlist to fetch.
+ * @param {number} params.pageSize - The number of results to fetch per page.
+ * @param {number} params.pageParam - The page number to fetch.
+ * @returns {Promise<{ data: any[], currentPage: number, nextPage: number|null }>} - An object containing the playlist song items, the current page, and the next page (or null if there are no more pages).
+ */
+export const fetchInfintiePlaylistItems = async ({ id, pageSize, pageParam }) => {
+  // Initialize the response object
+  let res = {
+    data: null,
+    currentPage: pageParam,
+    nextPage: null,
+  };
+
+  try {
+    // Fetch the first page of playlist's song item
+    const response = await api.get(`/playlists?id=${id}&page=${pageParam}&limit=${pageSize}`);
+    if (response.status === 200) {
+      (res.data = response.data.data),
+        (res.currentPage = pageParam),
+        // Calculate the next page based on the start index and total count
+        (res.nextPage = response.data.data.songCount + pageSize < 50 ? pageParam + 1 : null);
+    }
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * Fetches a paginated set of songs for a given artist from the JioSaavn API based on the provided artist ID, page size, and page parameter.
+ *
+ * @param {object} params - An object containing the artist parameters.
+ * @param {string} params.id - The ID of the artist to fetch songs for.
+ * @param {number} params.pageSize - The number of results to fetch per page.
+ * @param {number} params.pageParam - The page number to fetch.
+ * @returns {Promise<{ data: any[], currentPage: number, nextPage: number|null }>} - An object containing the artist's songs, the current page, and the next page (or null if there are no more pages).
+ */
+export const fetchInfintieArtistSongs = async ({ id, pageSize, pageParam }) => {
+  // Initialize the response object
+  let res = {
+    data: null,
+    currentPage: pageParam,
+    nextPage: null,
+  };
+
+  try {
+    // Fetch the first page of artist's songs
+    const response = await api.get(
+      `/artists/${id}?page=${pageParam}&songCount=${pageSize}&sortBy=latest&sortOrder=desc`
+    );
+    if (response.status === 200) {
+      (res.data = response.data.data),
+        (res.currentPage = pageParam),
+        // Calculate the next page based on the start index and total count
+        (res.nextPage = response.data.data.topSongs.length + pageSize < 500 ? pageParam + 1 : null);
     }
 
     return res;

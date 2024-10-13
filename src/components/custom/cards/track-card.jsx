@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import * as T from '@/components/ui/tooltip';
 
-import { capitalizeFirstLetter, cn, formatString } from '@/lib/utils';
+import { capitalizeFirstLetter, cn, formatString, stripHtml } from '@/lib/utils';
 
 import { useStore } from '@/store/use-store';
 
@@ -45,12 +45,12 @@ const TrackCard = ({ size = 150, className, media, ...props }) => {
       </div>
       <div className="flex flex-col space-y-1 text-xs">
         <Link
-          to={`/details/${media.id}`}
+          to={`/details/${media.type}/${media.id}`}
           style={{ width: `${size - 10}px` }}
           onClick={() => setCanGoBack(true)}
           className="inline-flex origin-left scale-95 items-center justify-start truncate text-[0.75rem] leading-4 tracking-tight transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
-          {capitalizeFirstLetter(media.name)}
+          {capitalizeFirstLetter(stripHtml(media.name))}
         </Link>
         <Link
           to={`/details/${media.id}`}
@@ -59,8 +59,8 @@ const TrackCard = ({ size = 150, className, media, ...props }) => {
           className="inline-block origin-left scale-90 truncate text-[0.5rem] tracking-tight text-muted-foreground transition-colors hover:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
           {media.album?.name
-            ? `Album - ${capitalizeFirstLetter(media.album?.name)}`
-            : formatString(media.artists?.primary) || capitalizeFirstLetter(media.type)}
+            ? `Album - ${capitalizeFirstLetter(stripHtml(media.album?.name))}`
+            : formatString(media.artists?.primary) || capitalizeFirstLetter(stripHtml(media.type))}
         </Link>
       </div>
     </div>
