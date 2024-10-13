@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import useColors from '@/hooks/use-colors';
 
-import * as req from '@/services/api/jio-saavn';
+import { fetchSongDetailsByQuery } from '@/services/api/jio-saavn';
 
 import { useMedia } from '@/providers/media-provider';
 
@@ -14,6 +14,7 @@ import RepeatControl from './controls/repeat-control';
 import ShuffleControl from './controls/shuffle-control';
 import TimelineControl from './controls/timeline-control';
 import VolumeControl from './controls/volume-control';
+import Error from './error';
 import SkeletonCurrentMediaInfo from './skeletons/current-media-info';
 
 const MediaControls = () => {
@@ -23,7 +24,7 @@ const MediaControls = () => {
   // Fetch initial data
   const { isPending, error, data, refetch } = useQuery({
     queryKey: ['currentSong', song],
-    queryFn: async () => await req.fetchSongDetailsByQuery('song', song),
+    queryFn: async () => await fetchSongDetailsByQuery('song', song),
   });
 
   // Refetches the song when the song id changes.
@@ -32,19 +33,10 @@ const MediaControls = () => {
   }, [song]);
 
   // Update color on data change
-  useCallback(putColor(data?.image[0].url), [data]);
+  useCallback(putColor(data?.image[0].url), [data, putColor]);
 
-  /**
-   * Renders an error message when there is an error fetching the song data.
-   * This component is used within the `MediaControls` component to handle error cases.
-   */
-  if (error) {
-    return (
-      <div className="flex h-full w-full items-center justify-center bg-red-400">
-        Error fetching data: {error.message}
-      </div>
-    );
-  }
+  // Render error message if any
+  if (error) return <Error msg={`Failed to load media controls. ${error.message}`} className="bg-yellow-300" />;
 
   return (
     <div

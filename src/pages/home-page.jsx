@@ -1,5 +1,7 @@
 import { Suspense, lazy } from 'react';
 
+import Error from '@/components/custom/error';
+import ErrorBoundary from '@/components/custom/error-boundary';
 import HomeTabs from '@/components/custom/home-tabs';
 import SkeletonHome from '@/components/custom/skeletons/home';
 import SkeletonSlider from '@/components/custom/skeletons/slider';
@@ -38,24 +40,26 @@ const HomePage = () => {
       <HomeTabs defaultValue="music">
         <TabsContent value="music">
           <Page title="Listen Now" body="Top picks for you. Updated daily." styles="mt-2 space-y-6">
-            <Suspense fallback={isPending && <SkeletonSlider size={200} />}>
-              <CardScroller data={data?.playlists?.results} size={200} />
-            </Suspense>
-            <Suspense fallback={<SkeletonSlider size={150} />}>
-              <Slider data={data?.songs?.results} title="New Releases" category="songs" />
-            </Suspense>
-            <Suspense fallback={<SkeletonSlider size={150} />}>
-              <Slider data={data?.albums?.results} title="Tob Albums" category="albums" />
-            </Suspense>
-            <Suspense fallback={<SkeletonSlider size={140} />}>
-              <Slider
-                data={data?.artists?.results}
-                title="Popular Artists"
-                category="artists"
-                card={ArtistCard}
-                size={140}
-              />
-            </Suspense>
+            <ErrorBoundary fallback={<Error msg={'Could not fetch data.'} />}>
+              <Suspense fallback={isPending && <SkeletonSlider size={200} />}>
+                <CardScroller data={data?.playlists?.results} size={200} />
+              </Suspense>
+              <Suspense fallback={<SkeletonSlider size={150} />}>
+                <Slider data={data?.songs?.results} title="New Releases" category="songs" />
+              </Suspense>
+              <Suspense fallback={<SkeletonSlider size={150} />}>
+                <Slider data={data?.albums?.results} title="Tob Albums" category="albums" />
+              </Suspense>
+              <Suspense fallback={<SkeletonSlider size={140} />}>
+                <Slider
+                  data={data?.artists?.results}
+                  title="Popular Artists"
+                  category="artists"
+                  card={ArtistCard}
+                  size={140}
+                />
+              </Suspense>
+            </ErrorBoundary>
           </Page>
         </TabsContent>
         <TabsContent value="live">

@@ -2,6 +2,8 @@ import { Suspense, lazy } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
+import Error from '@/components/custom/error';
+import ErrorBoundary from '@/components/custom/error-boundary';
 import MediaControls from '@/components/custom/media-controls';
 import LoadingSpinner from '@/components/custom/skeletons/loading-spinner';
 import SkeletonNavbar from '@/components/custom/skeletons/navbar';
@@ -26,32 +28,38 @@ function App() {
   return (
     <div className="relative overflow-x-hidden">
       {/* Navbar */}
-      <Suspense fallback={<SkeletonNavbar />}>
-        <Navbar />
-      </Suspense>
+      <ErrorBoundary fallback={<Error msg={'Failed to load Navbar items.'} />}>
+        <Suspense fallback={<SkeletonNavbar />}>
+          <Navbar />
+        </Suspense>
+      </ErrorBoundary>
       <ResizablePanelGroup direction="horizontal" className="h-full w-screen border">
         <ResizablePanel defaultSize={20} minSize={16} maxSize={25} className="hidden lg:block">
           <ScrollArea className="flex max-h-[calc(100vh-3.2rem)] min-h-[calc(100vh-3.2rem)] flex-col">
             {/* Sidebar */}
-            <Suspense fallback={<SkeletonSidebar />}>
-              <Sidebar />
-            </Suspense>
+            <ErrorBoundary fallback={<Error msg={'Failed to load Sidebar navigation.'} />}>
+              <Suspense fallback={<SkeletonSidebar />}>
+                <Sidebar />
+              </Suspense>
+            </ErrorBoundary>
           </ScrollArea>
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={80}>
           <ScrollArea className="flex max-h-[calc(100vh-3.2rem)] min-h-[calc(100vh-3.2rem)] flex-col p-6 pb-0">
-            <Suspense fallback={<LoadingSpinner />}>
-              <Routes>
-                {/* Add app routes here */}
-                <Route path="/" element={<HomePage />} />
-                <Route path="/songs" element={<SongPage />} />
-                <Route path="/albums" element={<AlbumPage />} />
-                <Route path="/artists" element={<ArtistPage />} />
-                <Route path="/details/:type/:id" element={<DetailsPage />} />
-                <Route path="/*" element={<NoPage />} />
-              </Routes>
-            </Suspense>
+            <ErrorBoundary fallback={<Error msg={'Failed to load page.'} />}>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Routes>
+                  {/* Add app routes here */}
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/songs" element={<SongPage />} />
+                  <Route path="/albums" element={<AlbumPage />} />
+                  <Route path="/artists" element={<ArtistPage />} />
+                  <Route path="/details/:type/:id" element={<DetailsPage />} />
+                  <Route path="/*" element={<NoPage />} />
+                </Routes>
+              </Suspense>
+            </ErrorBoundary>
           </ScrollArea>
         </ResizablePanel>
       </ResizablePanelGroup>
