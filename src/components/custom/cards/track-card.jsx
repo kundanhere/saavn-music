@@ -45,7 +45,7 @@ const TrackCard = ({ size = 150, className, media, ...props }) => {
       </div>
       <div className="flex flex-col space-y-1 text-xs">
         <Link
-          to={`/details/${media.id}`}
+          to={`/details/${media.type}/${media.id}`}
           style={{ width: `${size - 10}px` }}
           onClick={() => setCanGoBack(true)}
           className="inline-flex origin-left scale-95 items-center justify-start truncate text-[0.75rem] leading-4 tracking-tight transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"

@@ -62,10 +62,22 @@ export const fetchPlaylistsByQuery = async (query) => {
 /**
  * Fetches details for a song by its ID.
  */
-export const fetchSongDetailsByQuery = async (type, id) => {
+export const fetchSongDetailsById = async (id) => {
   try {
-    const response = await api.get(`/${type}s/${id}`);
+    const response = await api.get(`/songs/${id}`);
     return response.status === 200 ? response.data.data[0] : response.data.message;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * Fetches details for a song by its ID.
+ */
+export const fetchAlbumDetailsById = async (id) => {
+  try {
+    const response = await api.get(`/albums?id=${id}`);
+    return response.status === 200 ? response.data.data : response.data.message;
   } catch (error) {
     console.log(error);
   }
