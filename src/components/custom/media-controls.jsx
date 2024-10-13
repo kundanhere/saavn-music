@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import useColors from '@/hooks/use-colors';
 
-import { fetchSongDetailsByQuery } from '@/services/api/jio-saavn';
+import { fetchSongDetailsById } from '@/services/api/jio-saavn';
 
 import { useMedia } from '@/providers/media-provider';
 
@@ -24,7 +24,7 @@ const MediaControls = () => {
   // Fetch initial data
   const { isPending, error, data, refetch } = useQuery({
     queryKey: ['currentSong', song],
-    queryFn: async () => await fetchSongDetailsByQuery('song', song),
+    queryFn: async () => await fetchSongDetailsById(song),
   });
 
   // Refetches the song when the song id changes.

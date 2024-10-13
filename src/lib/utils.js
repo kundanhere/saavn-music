@@ -30,7 +30,7 @@ export function sortByDate(data = [], order = 'asc') {
  * @returns {any[]} - The sorted array of data objects.
  */
 export function sortByName(data = [], order = 'asc') {
-  if (data.length === 0) return [];
+  if (data.length === 0) return data;
   return order === 'asc'
     ? data.sort((a, b) => a.name.localeCompare(b.name))
     : data.sort((a, b) => b.name.localeCompare(a.name));
@@ -44,7 +44,10 @@ export function sortByName(data = [], order = 'asc') {
  */
 export function formatString(people = []) {
   if (people === undefined || people.length === 0) return '';
-  return people.map((person) => person.name).join(', ');
+  return people
+    .map((person) => person.name)
+    .join(', ')
+    .replace(/(&quot;)|(&amp;)/g, '');
 }
 
 /**
@@ -94,4 +97,14 @@ export function getAlphabet(name) {
  */
 export function wait(duration) {
   return new Promise((resolve) => setTimeout(resolve, duration));
+}
+
+/**
+ * Replaces HTML entities with their corresponding characters in the given HTML string.
+ *
+ * @param {string} htmlString - The HTML string to strip HTML entities from.
+ * @returns {string} The input HTML string with HTML entities replaced by their corresponding characters.
+ */
+export function stripHtml(htmlString) {
+  return !htmlString ? htmlString : htmlString.replace(/(&quot;)|(&amp;)/g, '');
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-import { cn, getAlphabet } from '@/lib/utils';
+import { cn, getAlphabet, stripHtml } from '@/lib/utils';
 
 import { useStore } from '@/store/use-store';
 
@@ -36,7 +36,7 @@ const ArtistCard = ({ size = 140, className, media, ...props }) => {
           style={{ width: `${size}px` }}
           className="inline-block items-center justify-start truncate text-center text-[0.5rem] leading-5 tracking-tight transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
-          {media.name || 'Unknown Artist'}
+          {stripHtml(media.name) || 'Unknown Artist'}
         </Link>
       </div>
     </div>

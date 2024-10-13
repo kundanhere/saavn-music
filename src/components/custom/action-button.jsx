@@ -30,7 +30,7 @@ const ActionButton = ({ data }) => {
         </Button>
       </Comp.DropdownMenuTrigger>
       <Comp.DropdownMenuContent align="end">
-        <DownloadLink url={data.downloadUrl[4].url} fileName={`${data.name}.mp3`} />
+        <DownloadLink url={data?.downloadUrl[4].url} fileName={`${data?.name}.mp3`} />
         <Comp.DropdownMenuItem disabled onClick={() => console.log('add to favorite clicked')}>
           <span>Add to favorites</span>
         </Comp.DropdownMenuItem>
