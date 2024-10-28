@@ -56,7 +56,7 @@ const SongDetailsPage = () => {
                   />
                 </motion.div>
                 <motion.div style={props} className="absolute flex-grow">
-                  <h1 className="text-4xl font-semibold leading-10">{data?.name || 'Untitled name'}</h1>
+                  <h1 className="w-full truncate text-4xl font-semibold leading-10">{data?.name || 'Untitled name'}</h1>
                   <h3 className="text-sm leading-7 text-muted dark:text-muted-foreground">
                     {(data && stripHtml(data.copyright)) || 'Untitled description'}
                   </h3>

@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
  * Initial state for the media context.
  */
 const initialState = {
-  currSong: '67d1h4XH',
+  currSong: 'icJam_5l',
   setCurrSong: (id) => {},
 };
 
@@ -15,7 +15,7 @@ const initialState = {
  */
 const MediaProviderContext = createContext(initialState);
 
-export const MediaProvider = ({ children, defaultMedia = '67d1h4XH', storageKey = 'saavn-music', ...props }) => {
+export const MediaProvider = ({ children, defaultMedia = 'icJam_5l', storageKey = 'saavn-music', ...props }) => {
   const [song, setSong] = useState(() => localStorage.getItem(storageKey) || defaultMedia);
 
   // Update the media when the song changes.

@@ -1,9 +1,12 @@
 import { Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 
 import { capitalizeFirstLetter, convertSecondsToMinutes, formatString, stripHtml } from '@/lib/utils';
+
+import { useStore } from '@/store/use-store';
 
 import ActionButton from './action-button';
 
@@ -11,6 +14,8 @@ import ActionButton from './action-button';
  * Renders a table row for a track item in a track list.
  */
 const TrackListItem = ({ content, idx, itemIndex = true }) => {
+  const { setCanGoBack } = useStore();
+
   return (
     <TableRow className="!border-b">
       {itemIndex && <TableCell className="w-[60px] p-2 text-center font-medium">{idx}</TableCell>}
@@ -18,7 +23,13 @@ const TrackListItem = ({ content, idx, itemIndex = true }) => {
         <img className="h-[32px] w-[32px] rounded-sm object-cover" src={content?.image[0].url} alt={content?.name} />
       </TableCell>
       <TableCell className="w-72 p-2">
-        <p className="w-72 truncate">{capitalizeFirstLetter(stripHtml(content?.name))}</p>
+        <Link
+          to={`/details/${content?.type}/${content?.id}`}
+          onClick={() => setCanGoBack(true)}
+          className="inline-flex w-72 items-center justify-start truncate text-[0.75rem] tracking-tight transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+        >
+          {capitalizeFirstLetter(stripHtml(content?.name))}
+        </Link>
         <p className="w-72 origin-left scale-90 truncate text-muted-foreground">
           {stripHtml(formatString(content?.artists.primary))}
         </p>
